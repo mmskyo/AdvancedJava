@@ -73,13 +73,15 @@ public class PizzaMakingPanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 Pizza madePizza = new Pizza(new ArrayList<>(currentToppings));
                 gameFrame.getGame().setCurrentToppings(currentToppings); // 현재 토핑 설정
-                boolean isSatisfied = gameFrame.getGame().getCurrentOrder().isSatisfied(madePizza);
                 
+                boolean isSatisfied = gameFrame.getGame().evaluateOrder(madePizza); // 주문 만족 여부 평가
+                
+                // 리뷰 업데이트
                 gameFrame.getReviewPanel().updateReview(gameFrame.getGame().getCurrentOrder(), isSatisfied);
                 
-                // 다음 회차 준비 - pizzamakingpanel 초기화
+                // 다음 회차 준비 - 패널 초기화
                 currentToppings.clear();
-                statusLabel.setText("현재 상태 : ");
+                statusLabel.setText("현재 상태 : "); 
                 pizzaPanel.repaint();
                 
                 // 리뷰패널로 넘어가
@@ -87,7 +89,6 @@ public class PizzaMakingPanel extends JPanel {
             }
         });
     }
-
     private void updateStatus(String topping) {
     	// 버튼을 다시 누르면 토핑을 제거 
         if (currentToppings.contains(topping)) {

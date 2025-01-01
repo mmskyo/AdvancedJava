@@ -25,12 +25,12 @@ public class ResultPanel extends JPanel {
         // 결과 보이기
         showResult();
     }
-
     public void showResult() {
-        int satisfiedCustomers = gameFrame.getGame().getSatisfiedCustomers();
+        int satisfiedCustomers = gameFrame.getGame().getSatisfiedCustomers(); // 만족한 고객 수 가져오기
         StringBuilder sb = new StringBuilder();
         sb.append("게임결과\n");
         sb.append("만족시킨 고객의 수 : ").append(satisfiedCustomers).append("명\n");
+        
         if (satisfiedCustomers >= 2) {
             sb.append("만족시킨 고객의 입소문을 타 멀리서도 찾아오는 가게가 되어 맛집이 되었다.\n");
             sb.append("축하합니다");
@@ -38,6 +38,7 @@ public class ResultPanel extends JPanel {
             sb.append("아무도 만족하지않아 가게가 문을 닫았다.\n");
             sb.append("분발하세요");
         }
+        
         resultArea.setText(sb.toString());
     }
 }

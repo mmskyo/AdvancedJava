@@ -24,13 +24,12 @@ public class OrderPanel extends JPanel {
         });
         add(acceptButton, BorderLayout.SOUTH);
 
-        // 주문 업데이트 
         updateOrder();
     }
 
     public void updateOrder() {
         Order currentOrder = gameFrame.getGame().getCurrentOrder();
-        if (currentOrder != null) {
+        if (currentOrder != null) { // try catch로 바꿔
             orderTextArea.setText(currentOrder.getOrderString());
             System.out.println("Updated Order Panel with: " + currentOrder.getOrderString()); // 디버깅 출력
         } else {

@@ -53,8 +53,8 @@ public class Order {
     // 조건을 충족했는가?
     public boolean isSatisfied(Pizza pizza) {
         List<String> pizzaToppings = pizza.getToppings();
-
-        // 기본 토핑 체크
+        
+        // 기본 토핑 체크 (예: 토마토 소스와 치즈)
         if (!pizzaToppings.contains("토마토 소스") || !pizzaToppings.contains("치즈")) {
             return false;
         }
@@ -75,7 +75,6 @@ public class Order {
 
         return true; // 모든 조건을 충족하면 true 반환
     }
-
     public String getOrderString() {
         return orderString;
     }

@@ -1,18 +1,18 @@
 import java.util.*;
 
 public class Game {
+	private List<String> currentToppings; // 현재 토핑 리스트
 	private String[] availableToppings = {"페퍼로니", "버섯", "양파", "파인애플", "고기", "감자", "브로콜리"};
     private List<Order> orders;
     private int orderNo = 4;
     private int currentOrderIndex = 0;
     private int satisfiedCustomers = 0;
-    private List<String> currentToppings;
 	private GameFrame gameFrame;
 
     public Game() {
         orders = new ArrayList<>();
-        satisfiedCustomers = 0;
         currentToppings = new ArrayList<>(); // 초기화
+        satisfiedCustomers = 0; 
         generateOrders(); 
     }
     
@@ -28,7 +28,7 @@ public class Game {
             orders.add(new Order(this)); // 각 주문 생성
         }
     }
-    // 현재 주문 반환
+    // 현재 주문 반환 - indexOutOfBounds 
     public Order getCurrentOrder() {
     	return orders.get(currentOrderIndex);
     }
@@ -53,12 +53,11 @@ public class Game {
         boolean isSatisfied = currentOrder.isSatisfied(pizza);
         
         if (isSatisfied) {
-            satisfiedCustomers++; // 만족한 고객 수 증가
+            satisfiedCustomers++; // 고객 수 증가
         }
         
         return isSatisfied; // 만족 여부 반환
     }
-
     public int getSatisfiedCustomers() {
         return satisfiedCustomers;
     }
@@ -66,12 +65,11 @@ public class Game {
     public String[] getAvailableToppings() {
         return availableToppings;
     }
-    
     public List<String> getCurrentToppings() {
-        return currentToppings; // currentToppings는 Game 클래스의 필드로 선언되어 있어야 합니다.
+        return currentToppings; // 현재 토핑 반환
     }
 
     public void setCurrentToppings(List<String> toppings) {
-        this.currentToppings = toppings;
+        this.currentToppings = toppings; // 현재 토핑 설정
     }
 }
